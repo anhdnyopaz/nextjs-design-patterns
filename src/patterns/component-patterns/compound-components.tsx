@@ -225,7 +225,7 @@ export const DropdownTrigger = ({ children }: { children: ReactNode }) => {
   const { toggle } = useDropdownContext();
 
   if (isValidElement(children)) {
-    return cloneElement(children as ReactElement<any>, {
+    return cloneElement(children as ReactElement<Record<string, unknown>>, {
       onClick: toggle
     });
   }

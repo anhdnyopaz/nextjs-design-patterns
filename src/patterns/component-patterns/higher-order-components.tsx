@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, ComponentType, ReactNode } from 'react';
+import React, { useState, useEffect, ComponentType } from 'react';
 
 // Types
-type ComponentWithLoading<P = {}> = ComponentType<P & { isLoading?: boolean }>;
+type ComponentWithLoading<P = Record<string, unknown>> = ComponentType<P & { isLoading?: boolean }>;
 
 // 1. WithLoading HOC
 export function withLoading<P extends object>(
@@ -120,7 +120,7 @@ export function withErrorBoundary<P extends object>(
     }
   }
 
-  (ErrorBoundary as any).displayName = `withErrorBoundary(${WrappedComponent.displayName || WrappedComponent.name})`;
+  (ErrorBoundary as unknown as { displayName: string }).displayName = `withErrorBoundary(${WrappedComponent.displayName || WrappedComponent.name})`;
 
   return ErrorBoundary;
 }
@@ -143,7 +143,7 @@ const DefaultErrorFallback = ({ error, resetError }: { error: Error; resetError:
 // 4. WithLocalStorage HOC
 interface LocalStorageOptions {
   key: string;
-  defaultValue?: any;
+  defaultValue?: unknown;
 }
 
 export function withLocalStorage<P extends object>(
@@ -162,7 +162,7 @@ export function withLocalStorage<P extends object>(
       }
     });
 
-    const setValue = (value: any) => {
+    const setValue = (value: unknown) => {
       try {
         setStoredValue(value);
         window.localStorage.setItem(options.key, JSON.stringify(value));
@@ -271,10 +271,12 @@ export function withTheme<P extends object>(
 }
 
 // 7. Compose HOCs utility
-export function compose<P extends object>(
+export function compose(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...hocs: Array<(component: ComponentType<any>) => ComponentType<any>>
 ) {
-  return (WrappedComponent: ComponentType<P>) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (WrappedComponent: ComponentType<any>) => {
     return hocs.reduceRight(
       (acc, hoc) => hoc(acc),
       WrappedComponent

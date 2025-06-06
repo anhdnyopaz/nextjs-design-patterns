@@ -59,8 +59,8 @@ const generateUsers = (count: number): User[] => {
 };
 
 // Mock databases
-let mockPosts = generatePosts(1000);
-let mockUsers = generateUsers(50);
+const mockPosts = generatePosts(1000);
+const mockUsers = generateUsers(50);
 
 // Utility functions
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

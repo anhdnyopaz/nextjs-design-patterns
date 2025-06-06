@@ -125,6 +125,10 @@ export class UserService {
       
       if (user) {
         // In real app, verify password here
+        // For now, just check if password is provided
+        if (!password) {
+          throw new Error('Password is required');
+        }
         this.observer.emit(StateEventFactory.userLogin(user));
         return user;
       }

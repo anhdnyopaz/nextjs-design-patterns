@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { UserProvider } from '@/patterns/state-management/provider/UserProvider';
 import DemoGuide from '@/components/state-management/DemoGuide';
-import PopularLibraries from '@/components/state-management/PopularLibraries';
 import UserList from '@/components/state-management/UserList';
 import AddUserForm from '@/components/state-management/AddUserForm';
 import CurrentUserDisplay from '@/components/state-management/CurrentUserDisplay';
@@ -54,7 +53,26 @@ export default function StateManagementDemo() {
         </UserProvider>
 
         <LearningSection />
-        <PopularLibraries />
+        
+        {/* Link to Popular Libraries */}
+        <div className="mt-12 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">📚 Khám phá thêm</h3>
+            <p className="text-gray-600 mb-6">
+              Tìm hiểu về các thư viện phổ biến áp dụng Design Patterns
+            </p>
+            <Link 
+              href="/popular-libraries"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-md hover:shadow-lg font-medium text-lg"
+            >
+              <span className="mr-3 text-2xl">📚</span>
+              Xem Thư viện Phổ biến
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

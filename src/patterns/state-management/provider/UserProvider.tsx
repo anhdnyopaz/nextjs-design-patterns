@@ -124,6 +124,7 @@ export function UserProvider({ children }: UserProviderProps) {
       ];
       dispatch({ type: 'SET_USERS', payload: mockUsers });
     } catch (error) {
+      console.error('Error fetching users:', error);
       dispatch({ type: 'SET_ERROR', payload: 'Failed to fetch users' });
     }
   }, []);

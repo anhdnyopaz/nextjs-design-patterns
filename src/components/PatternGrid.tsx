@@ -53,6 +53,18 @@ export default function PatternGrid() {
       gradientColors: "from-red-500 to-pink-600",
       isComingSoon: true,
       tags: []
+    },
+    {
+      href: "/popular-libraries",
+      icon: "📚",
+      title: "Popular Libraries",
+      description: "Khám phá thư viện áp dụng Design Patterns",
+      gradientColors: "from-purple-500 to-pink-600",
+      tags: [
+        { label: "Redux", color: "bg-purple-100 text-purple-800" },
+        { label: "Zustand", color: "bg-pink-100 text-pink-800" },
+        { label: "React Query", color: "bg-indigo-100 text-indigo-800" }
+      ]
     }
   ];
 

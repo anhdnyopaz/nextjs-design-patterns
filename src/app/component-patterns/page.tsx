@@ -4,6 +4,7 @@ import Link from 'next/link';
 import DemoGuide from '@/components/component-patterns/DemoGuide';
 import CompoundComponentsDemo from '@/components/component-patterns/CompoundComponentsDemo';
 import RenderPropsDemo from '@/components/component-patterns/RenderPropsDemo';
+import LearningSection from '@/components/component-patterns/LearningSection';
 
 export default function ComponentPatternsDemo() {
   return (
@@ -42,6 +43,9 @@ export default function ComponentPatternsDemo() {
           {/* Render Props Demo */}
           <RenderPropsDemo />
         </div>
+
+        {/* Learning Section */}
+        <LearningSection />
       </div>
     </div>
   );

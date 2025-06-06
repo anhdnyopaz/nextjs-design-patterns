@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Observer Pattern Implementation for State Changes
 
 // Event Types

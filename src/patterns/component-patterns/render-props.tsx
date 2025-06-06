@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, useCallback } from 'react';
 
 // Mouse Position Render Prop
 interface MousePosition {
@@ -74,7 +74,7 @@ export function DataFetcher<T>({ url, render, children }: DataFetcherProps<T>) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
     
@@ -90,11 +90,11 @@ export function DataFetcher<T>({ url, render, children }: DataFetcherProps<T>) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [url]);
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [url, fetchData]);
 
   const state: FetchState<T> = {
     data,
@@ -263,13 +263,14 @@ export const IntersectionObserver = ({
       { threshold, rootMargin }
     );
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
+    const currentTarget = targetRef.current;
+    if (currentTarget) {
+      observer.observe(currentTarget);
     }
 
     return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
       }
     };
   }, [threshold, rootMargin]);

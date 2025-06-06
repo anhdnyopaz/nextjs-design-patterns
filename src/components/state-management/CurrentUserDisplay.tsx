@@ -7,9 +7,9 @@ import { useUserService } from '@/patterns/state-management/UserService';
 export default function CurrentUserDisplay() {
   const { state, login, logout } = useUser();
   const [loginEmail, setLoginEmail] = useState('a@example.com');
+  const userService = useUserService();
 
   const handleLogin = async () => {
-    const userService = useUserService();
     try {
       const user = await userService.login(loginEmail, 'password');
       if (user) {

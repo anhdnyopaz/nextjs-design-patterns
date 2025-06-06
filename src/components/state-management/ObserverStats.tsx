@@ -5,7 +5,7 @@ import { useUserService } from '@/patterns/state-management/UserService';
 
 export default function ObserverStats() {
   const userService = useUserService();
-  const [stats, setStats] = useState<any>(null);
+  const [stats, setStats] = useState<{ totalEvents: number; observers: number; eventCounts: Record<string, number> } | null>(null);
 
   useEffect(() => {
     const updateStats = () => {

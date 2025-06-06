@@ -20,10 +20,12 @@ export interface SWRResponse<T> {
 }
 
 // Simple cache implementation
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const cache = new Map<string, any>();
 const timestamps = new Map<string, number>();
 
 // Fetcher function type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Fetcher<T> = (...args: any[]) => Promise<T>;
 
 // Custom SWR hook implementation
@@ -184,6 +186,7 @@ export function useSWR<T>(
 // Global cache utilities
 export const swrCache = {
   get: (key: string) => cache.get(key),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set: (key: string, value: any) => cache.set(key, value),
   delete: (key: string) => cache.delete(key),
   clear: () => cache.clear(),
