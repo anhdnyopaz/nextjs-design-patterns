@@ -1,7 +1,17 @@
 import PatternCard from './PatternCard';
 
+interface Pattern {
+  href?: string;
+  icon: string;
+  title: string;
+  description: string;
+  gradientColors: string;
+  tags: { label: string; color: string; }[];
+  isComingSoon?: boolean;
+}
+
 export default function PatternGrid() {
-  const patterns = [
+  const patterns: Pattern[] = [
     {
       href: "/state-management",
       icon: "🏗️",
@@ -39,20 +49,28 @@ export default function PatternGrid() {
       ]
     },
     {
+      href: "/ui-ux-patterns",
       icon: "🎨",
       title: "UI/UX Patterns",
       description: "Theme Provider, Portal Pattern, Responsive Design",
       gradientColors: "from-teal-500 to-cyan-600",
-      isComingSoon: true,
-      tags: []
+      tags: [
+        { label: "Theme Provider", color: "bg-purple-100 text-purple-800" },
+        { label: "Portal", color: "bg-blue-100 text-blue-800" },
+        { label: "Responsive", color: "bg-teal-100 text-teal-800" }
+      ]
     },
     {
+      href: "/error-handling",
       icon: "🛡️",
       title: "Error Handling",
       description: "Error Boundary, Retry Pattern, Circuit Breaker",
       gradientColors: "from-red-500 to-pink-600",
-      isComingSoon: true,
-      tags: []
+      tags: [
+        { label: "Error Boundary", color: "bg-red-100 text-red-800" },
+        { label: "Retry Pattern", color: "bg-orange-100 text-orange-800" },
+        { label: "Circuit Breaker", color: "bg-yellow-100 text-yellow-800" }
+      ]
     },
     {
       href: "/popular-libraries",
