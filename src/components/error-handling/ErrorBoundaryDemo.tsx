@@ -106,7 +106,7 @@ function BuggyComponent({ shouldThrow }: { shouldThrow: boolean }) {
         <h3 className="font-semibold text-green-800">Component hoạt động bình thường</h3>
       </div>
       <p className="text-green-600">
-        Component này đang chạy mà không có lỗi. Nhấn nút "Tạo lỗi" để xem Error Boundary hoạt động.
+        Component này đang chạy mà không có lỗi. Nhấn nút &quot;Tạo lỗi&quot; để xem Error Boundary hoạt động.
       </p>
     </div>
   );

@@ -49,8 +49,8 @@ export function useSWR<T>(
   const [isValidating, setIsValidating] = useState<boolean>(false);
   
   const retryCountRef = useRef(0);
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const fetchData = useCallback(async (showLoading = true): Promise<T | undefined> => {
     if (!key || !fetcher) return;

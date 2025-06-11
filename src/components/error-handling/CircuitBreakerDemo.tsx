@@ -203,7 +203,7 @@ function AutoCircuitBreakerDemo() {
       
       try {
         await circuitBreaker.execute();
-      } catch (err) {
+      } catch {
         // Ignore errors in auto test
       }
 
